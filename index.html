@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TestowyHelper</title>
+    <link rel="shortcut icon" href="lllogo.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css/style.css">
+</head>
+<body>
+    <h1>IpLogger</h1>
+    <button id="sendWebhook">new ip</button>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="logg.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#sendWebhook").click(function() {
+                $.getJSON("https://api.ipify.org?format=json", function(data) {
+                    const ipAddress = data.ip;
+                    sendToDiscord(ipAddress);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
